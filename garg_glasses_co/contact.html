@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact - Garg Glasses Co.</title>
+<!-- Same fonts/icons as index -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+    /* Base (match index look) */
+    *, *::before, *::after { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);
+      color:#1e293b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    a{ text-decoration:none; color:inherit; }
+
+    .container{ max-width:1100px; margin:0 auto; padding:0 24px; }
+
+    /* Header (same as index) */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255 255 255 / 0.72);
+      backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid #d1d5db;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 32px;
+      box-shadow:0 2px 8px rgb(0 0 0 / 0.04);
+    }
+    header h1{
+      margin:0;
+      font-weight:800;
+      font-size:clamp(1.5rem,2vw,2rem);
+      color:#4f46e5;
+      letter-spacing:1.2px;
+      user-select:none;
+      cursor:default;
+    }
+    nav a{
+      margin-left:24px;
+      font-weight:600;
+      font-size:1rem;
+      padding:8px 10px;
+      border-radius:8px;
+      transition:background-color .2s ease, color .2s ease;
+      color:#334155;
+    }
+    nav a:hover,
+    nav a:focus{
+      background:#4338ca;
+      color:#fff;
+      outline:none;
+      box-shadow:0 0 0 2px #4338ca;
+    }
+    .active-link{
+      background:#4338ca;
+      color:#fff !important;
+    }
+
+    /* Hero header for page */
+    .page-hero{
+      padding:56px 0 18px;
+      text-align:center;
+    }
+    .page-hero h2{
+      margin:0 0 10px;
+      font-weight:900;
+      color:#7c3aed;
+      font-size:clamp(2rem,3.5vw,2.6rem);
+      text-shadow:0 2px 10px rgb(124 58 237 / 0.12);
+    }
+    .page-hero p{
+      margin:0 auto;
+      max-width:720px;
+      color:#475569;
+      font-weight:600;
+    }
+
+    /* Card layout */
+    main{
+      flex:1;
+      padding:0 16px 40px;
+    }
+    .grid{
+      max-width:1100px;
+      margin:18px auto 0;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap:18px;
+    }
+    .card{
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:saturate(180%) blur(12px);
+      border:1px solid #e5e7eb;
+      border-radius:26px;
+      box-shadow:0 15px 40px rgb(139 92 246 / 0.18);
+      padding:22px;
+    }
+    .card h3{
+      margin:0 0 12px;
+      font-weight:900;
+      color:#111827;
+      font-size:1.25rem;
+    }
+    .muted{ color:#64748b; font-weight:600; margin:0 0 14px; }
+
+    /* Form */
+    form{ display:flex; flex-direction:column; gap:14px; }
+    label{ font-weight:800; color:#4338ca; font-size:.95rem; }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    input, textarea{
+      padding:14px 14px;
+      border-radius:14px;
+      border:2px solid #cbd5e1;
+      font-family:'Poppins',sans-serif;
+      font-size:1rem;
+      background:#fff;
+      color:#111827;
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    input:focus, textarea:focus{
+      outline:none;
+      border-color:#7c3aed;
+      box-shadow:0 0 0 4px rgb(124 58 237 / 0.18);
+    }
+    textarea{ resize:vertical; min-height:140px; }
+
+    .btn{
+      border:none;
+      cursor:pointer;
+      font-weight:900;
+      border-radius:16px;
+      padding:14px 16px;
+      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition:transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .btn-primary{
+      background:#7c3aed;
+      color:#fff;
+      box-shadow:0 10px 25px rgb(124 58 237 / 0.25);
+    }
+    .btn-primary:hover{ background:#5b21b6; transform:translateY(-1px); }
+    .btn-primary:focus{ outline:none; box-shadow:0 0 0 4px rgb(124 58 237 / 0.2); }
+
+    .form-feedback{
+      margin:8px 0 0;
+      font-weight:800;
+      display:none;
+    }
+
+    /* Info box */
+    .info-row{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px;
+      border-radius:18px;
+      border:1px solid #e5e7eb;
+      background:rgba(99 102 241 / 0.05);
+      margin-bottom:12px;
+    }
+    .info-row .material-icons{ color:#4338ca; }
+    .info-row strong{ display:block; color:#111827; }
+    .info-row span{ color:#64748b; font-weight:700; }
+
+    .hours{
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid #e5e7eb;
+    }
+    .hours p{ margin:6px 0 0; color:#64748b; font-weight:700; }
+
+    /* Footer (same feel as index) */
+    footer{
+      text-align:center;
+      padding:26px 16px;
+      color:#475569;
+      background:rgba(255 255 255 / 0.65);
+      border-top:1px solid #e5e7eb;
+      user-select:none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid{ grid-template-columns:1fr; }
+      header{ padding:0 16px; }
+      nav a{ margin-left:12px; font-size:.95rem; }
+    }
+    @media (max-width: 480px){
+      nav a{ margin-left:10px; font-size:.85rem; }
+      .card{ padding:18px; border-radius:22px; }
+    }
+  </style>
+<link href="styles.css" rel="stylesheet"/></head>
+<body>
+<!-- NOTE: You said file name is cart.html, so I am NOT changing any link targets.
+       But this is a Contact page UI, so you should ideally save this as contact.html. -->
+<header>
+<h1>Garg Glasses Co.</h1>
+<nav aria-label="Primary navigation">
+<a data-nav="index.html" href="index.html">Home</a>
+<a data-nav="products.html" href="products.html">Products</a>
+<a data-nav="about.html" href="about.html">About</a>
+<a data-nav="contact.html" href="contact.html">Contact</a>
+<a data-nav="faq.html" href="faq.html">FAQ</a>
+<a data-nav="cart.html" href="cart.html">Cart</a>
+<a data-nav="login.html" href="login.html" id="navAuthLink">Login</a>
+</nav>
+</header>
+<section class="page-hero">
+<div class="container">
+<h2>Get in Touch</h2>
+<p>We’d love to hear from you. Send a message and we’ll reply as soon as possible.</p>
+</div>
+</section>
+<main aria-label="Contact page" role="main">
+<div class="grid">
+<!-- Form Card -->
+<div class="card">
+<h3>Contact Form</h3>
+<p class="muted">Fill in your details and message. (This form shows a success message for now.)</p>
+<form id="contactForm" novalidate="">
+<div class="field">
+<label for="name">Your Name</label>
+<input id="name" name="name" placeholder="Enter your name" required="" type="text"/>
+</div>
+<div class="field">
+<label for="email">Your Email</label>
+<input id="email" name="email" placeholder="Enter your email" required="" type="email"/>
+</div>
+<div class="field">
+<label for="message">Your Message</label>
+<textarea id="message" name="message" placeholder="Write your message" required="" rows="6"></textarea>
+</div>
+<button class="btn btn-primary" type="submit">
+<span aria-hidden="true" class="material-icons">send</span>
+            Send Message
+          </button>
+<p aria-live="polite" class="form-feedback" id="formFeedback" role="alert"></p>
+</form>
+</div>
+<!-- Info Card -->
+<aside aria-label="Contact information" class="card">
+<h3>Contact Info</h3>
+<div class="info-row">
+<span aria-hidden="true" class="material-icons">mail</span>
+<div>
+<strong>Email</strong>
+<span>support@gargglasses.com</span>
+</div>
+</div>
+<div class="info-row">
+<span aria-hidden="true" class="material-icons">call</span>
+<div>
+<strong>Phone</strong>
+<span>+91-9876543210</span>
+</div>
+</div>
+<div class="info-row">
+<span aria-hidden="true" class="material-icons">location_on</span>
+<div>
+<strong>Address</strong>
+<span>Garg Glasses Co., India</span>
+</div>
+</div>
+<div class="hours">
+<h3 style="margin:0 0 8px;">Working Hours</h3>
+<p>Mon–Sat: 10:00 AM – 7:00 PM</p>
+<p>Sunday: Closed</p>
+</div>
+</aside>
+</div>
+</main>
+<footer>
+    © 2025 Garg Glasses Co. | All rights reserved
+  </footer>
+<script>
+    // Simple client-side validation + feedback (no backend yet)
+    const form = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+
+    function showFeedback(msg, ok=true){
+      feedback.textContent = msg;
+      feedback.style.display = 'block';
+      feedback.style.color = ok ? '#16a34a' : '#e11d48';
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!name) return showFeedback('Please enter your name.', false);
+      if (!email || !emailPattern.test(email)) return showFeedback('Please enter a valid email.', false);
+      if (!message) return showFeedback('Please enter your message.', false);
+
+      showFeedback('Message sent successfully! (Demo only — connect backend later.)', true);
+      form.reset();
+    });
+  </script>
+
+<script src="main.js"></script></body>
+</html>

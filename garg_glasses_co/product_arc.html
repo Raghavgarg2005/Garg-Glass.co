@@ -1,0 +1,338 @@
+<!-- FILE: product_arc.html --><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arc Mirror - Garg Glasses Co.</title>
+<!-- Same fonts/icons as your index + other pages -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+    /* Base */
+    *, *::before, *::after { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);
+      color:#1e293b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    a{ text-decoration:none; color:inherit; }
+    img{ max-width:100%; display:block; object-fit:cover; border-radius:18px; }
+
+    .container{ max-width:1100px; margin:0 auto; padding:0 24px; }
+
+    /* Header (same as index) */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255 255 255 / 0.72);
+      backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid #d1d5db;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 32px;
+      box-shadow:0 2px 8px rgb(0 0 0 / 0.04);
+    }
+    header h1{
+      margin:0;
+      font-weight:800;
+      font-size:clamp(1.5rem,2vw,2rem);
+      color:#4f46e5;
+      letter-spacing:1.2px;
+      user-select:none;
+      cursor:default;
+    }
+    nav a{
+      margin-left:24px;
+      font-weight:600;
+      font-size:1rem;
+      padding:8px 10px;
+      border-radius:8px;
+      transition:background-color .2s ease, color .2s ease;
+      color:#334155;
+    }
+    nav a:hover,
+    nav a:focus{
+      background:#4338ca;
+      color:#fff;
+      outline:none;
+      box-shadow:0 0 0 2px #4338ca;
+    }
+
+    /* Main layout */
+    main{ flex:1; padding:36px 0 44px; }
+
+    .crumbs{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color:#64748b;
+      font-weight:700;
+      margin:0 0 14px;
+      flex-wrap:wrap;
+    }
+    .crumbs a{
+      color:#4338ca;
+      font-weight:900;
+      padding:6px 8px;
+      border-radius:10px;
+    }
+    .crumbs a:hover,
+    .crumbs a:focus{
+      outline:none;
+      background:rgba(124 58 237 / 0.08);
+      box-shadow:0 0 0 3px rgb(124 58 237 / 0.16);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:saturate(180%) blur(12px);
+      border:1px solid #e5e7eb;
+      border-radius:26px;
+      box-shadow:0 15px 40px rgb(139 92 246 / 0.18);
+      padding:18px;
+    }
+
+    /* Product image */
+    .image-wrap{
+      overflow:hidden;
+      border-radius:22px;
+      box-shadow:0 10px 30px rgb(99 102 241 / 0.18);
+    }
+    .image-wrap img{
+      width:100%;
+      height:420px;
+      border-radius:22px;
+    }
+
+    /* Product info */
+    .title{
+      margin:0;
+      font-weight:900;
+      color:#111827;
+      font-size:clamp(1.8rem,3vw,2.2rem);
+    }
+    .sub{
+      margin:6px 0 10px;
+      color:#64748b;
+      font-weight:700;
+    }
+    .meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:10px 0 14px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid #e5e7eb;
+      background:rgba(99 102 241 / 0.06);
+      font-weight:900;
+      color:#4338ca;
+      font-size:.9rem;
+    }
+    .pill .material-icons{ font-size:18px; }
+
+    .price-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:12px 0 14px;
+    }
+    .price{
+      font-weight:900;
+      font-size:1.8rem;
+      color:#111827;
+    }
+    .ship{
+      color:#64748b;
+      font-weight:800;
+      font-size:.95rem;
+    }
+
+    .details h3{
+      margin:0 0 10px;
+      font-weight:900;
+      color:#111827;
+      font-size:1.15rem;
+    }
+    .details ul{
+      margin:0;
+      padding-left:18px;
+      color:#475569;
+      font-weight:700;
+    }
+
+    .note{
+      margin-top:12px;
+      padding:12px;
+      border-radius:18px;
+      border:1px solid #e5e7eb;
+      background:rgba(99 102 241 / 0.06);
+      color:#475569;
+      font-weight:700;
+    }
+
+    /* Buttons (same style family as other pages) */
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      border:none;
+      cursor:pointer;
+      font-weight:900;
+      border-radius:16px;
+      padding:14px 16px;
+      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition:transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+      flex:1;
+      min-width:190px;
+    }
+    .btn-primary{
+      background:#7c3aed;
+      color:#fff;
+      box-shadow:0 10px 25px rgb(124 58 237 / 0.25);
+    }
+    .btn-primary:hover{ background:#5b21b6; transform:translateY(-1px); }
+    .btn-primary:focus{ outline:none; box-shadow:0 0 0 4px rgb(124 58 237 / 0.20); }
+    .btn-light{
+      background:#fff;
+      border:2px solid #c7d2fe;
+      color:#4338ca;
+    }
+    .btn-light:hover{
+      background:rgba(124 58 237 / 0.06);
+      border-color:#7c3aed;
+    }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:26px 16px;
+      color:#475569;
+      background:rgba(255 255 255 / 0.65);
+      border-top:1px solid #e5e7eb;
+      user-select:none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      header{ padding:0 16px; }
+      nav a{ margin-left:12px; font-size:.95rem; }
+      .grid{ grid-template-columns:1fr; }
+      .image-wrap img{ height:320px; }
+    }
+    @media (max-width: 480px){
+      nav a{ margin-left:10px; font-size:.85rem; }
+      .btn{ min-width:100%; }
+      .image-wrap img{ height:240px; }
+    }
+  </style>
+<link href="styles.css" rel="stylesheet"/></head>
+<body>
+<header>
+<h1>Garg Glasses Co.</h1>
+<nav aria-label="Primary navigation">
+<a data-nav="index.html" href="index.html">Home</a>
+<a data-nav="products.html" href="products.html">Products</a>
+<a data-nav="about.html" href="about.html">About</a>
+<a data-nav="contact.html" href="contact.html">Contact</a>
+<a data-nav="faq.html" href="faq.html">FAQ</a>
+<a data-nav="cart.html" href="cart.html">Cart</a>
+<a data-nav="login.html" href="login.html" id="navAuthLink">Login</a>
+</nav>
+</header>
+<main>
+<div class="container">
+<div aria-label="Breadcrumb" class="crumbs">
+<a href="index.html">Home</a>
+<span aria-hidden="true" class="material-icons" style="font-size:18px;">chevron_right</span>
+<a href="products.html">Products</a>
+<span aria-hidden="true" class="material-icons" style="font-size:18px;">chevron_right</span>
+<span aria-current="page">Arc Mirror</span>
+</div>
+<div class="grid">
+<!-- Image + short description card (simple like other product pages) -->
+<section aria-label="Arc Mirror image" class="card">
+<!-- ✅ Replace image name with your real file -->
+<div class="image-wrap">
+<img alt="Arc Mirror product image" loading="lazy" src="VDR-542_29_x_29.webp"/>
+</div>
+<div class="note" style="margin-top:14px;">
+<span aria-hidden="true" class="material-icons" style="vertical-align:middle; margin-right:6px;">verified</span>
+            Premium finish with secure packaging for safe delivery.
+          </div>
+</section>
+<!-- Info card (same structure as other product pages: title, rating, price, add-to-cart) -->
+<aside aria-label="Arc Mirror details" class="card">
+<h2 class="title">Arc Mirror</h2>
+<p class="sub">Elegant arched wall mirror for modern interiors.</p>
+<div class="meta">
+<span class="pill"><span aria-hidden="true" class="material-icons">star</span> 4.7</span>
+<span class="pill"><span aria-hidden="true" class="material-icons">local_shipping</span> Safe Delivery</span>
+<span class="pill"><span aria-hidden="true" class="material-icons">design_services</span> Custom Sizes</span>
+</div>
+<div aria-label="Price and shipping" class="price-row">
+<div class="price">₹1,499</div>
+<div class="ship">Free delivery • Secure packaging</div>
+</div>
+<div aria-label="Specifications" class="details">
+<h3>Specifications</h3>
+<ul>
+<li>Shape: Arc / Arched top</li>
+<li>Finish: Premium polished edges</li>
+<li>Use: Bedroom, hallway, living room, vanity</li>
+<li>Care: Soft cloth, avoid harsh cleaners</li>
+</ul>
+</div>
+<div aria-label="Actions" class="actions">
+<button class="btn btn-primary add-to-cart-btn" data-id="arc" data-img="VDR-542_29_x_29.webp" data-price="1499" data-title="Arc Mirror" id="addToCartBtn" type="button">
+<span aria-hidden="true" class="material-icons">add_shopping_cart</span>
+              Add to Cart
+            </button>
+<a class="btn btn-light" href="products.html">
+<span aria-hidden="true" class="material-icons">arrow_back</span>
+              Back to Products
+            </a>
+</div>
+<div aria-label="Tip" class="note">
+            Tip: Want a custom size? Use the Contact page and mention your required dimensions.
+          </div>
+</aside>
+</div>
+</div>
+</main>
+<footer aria-label="Footer copyright" role="contentinfo">
+    © 2025 Garg Glasses Co. | All rights reserved
+  </footer>
+<script src="main.js"></script></body>
+</html>

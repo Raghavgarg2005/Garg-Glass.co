@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Explore premium mirrors by Garg Glasses Co. Shop wall, standing, decor, and bathroom mirrors." name="description"/>
+<title>Products - Garg Glasses Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body{
+      margin:0; font-family:'Poppins',sans-serif;
+      background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);
+      color:#1e293b; line-height:1.6; scroll-behavior:smooth;
+    }
+    a{ text-decoration:none; color:inherit; }
+    img{ max-width:100%; display:block; object-fit:cover; }
+
+    .container{ max-width:1200px; margin:0 auto; padding:0 24px; }
+
+    header{
+      position:sticky; top:0; z-index:1000;
+      background:rgba(255,255,255,.72);
+      backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid #d1d5db;
+      height:64px; display:flex; align-items:center; justify-content:space-between;
+      padding:0 32px; box-shadow:0 2px 8px rgba(0,0,0,.04);
+    }
+    header h1{ margin:0; font-weight:800; color:#4f46e5; letter-spacing:1.1px; font-size:clamp(1.3rem,2vw,1.9rem); }
+    nav{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+    nav a{
+      margin-left:16px; font-weight:600; font-size:1rem;
+      padding:8px 10px; border-radius:8px; color:#334155;
+      transition: background-color .2s ease, color .2s ease;
+    }
+    nav a:hover, nav a:focus{
+      background:#4338ca; color:#fff; outline:none; box-shadow:0 0 0 2px #4338ca;
+    }
+
+    .hero{
+      padding:85px 0 50px; text-align:center;
+      background:linear-gradient(135deg,#6366f1,#8b5cf6);
+      color:#fff;
+    }
+    .hero h2{ margin:0 0 10px; font-weight:900; font-size:clamp(2rem,4.5vw,3.4rem); text-shadow:0 2px 10px rgba(0,0,0,.2); }
+    .hero p{ margin:0 auto; max-width:760px; font-weight:500; font-size:clamp(1rem,2.3vw,1.2rem); opacity:.98; padding:0 12px; }
+
+    .controls-wrap{ margin-top:-26px; padding:0 24px; }
+    .controls-card{
+      max-width:1100px; margin:0 auto;
+      background:rgba(255,255,255,.9);
+      border:1px solid #e5e7eb; border-radius:22px;
+      box-shadow:0 10px 30px rgba(99,102,241,.12);
+      padding:14px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      backdrop-filter:saturate(180%) blur(12px);
+    }
+    .search{ flex:1.4; min-width:240px; position:relative; }
+    .search input{
+      width:100%; padding:12px 44px 12px 14px;
+      border-radius:14px; border:2px solid #c7d2fe;
+      font-family:'Poppins',sans-serif; font-weight:600; color:#334155;
+      outline:none; transition: box-shadow .2s ease, border-color .2s ease;
+      background:#fff;
+    }
+    .search input:focus{ border-color:#7c3aed; box-shadow:0 0 0 4px rgba(124,58,237,.18); }
+    .search .material-icons{
+      position:absolute; right:12px; top:50%; transform:translateY(-50%);
+      color:#64748b;
+    }
+
+    .chip-row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
+    .chip{
+      border:2px solid #c7d2fe; background:#fff; color:#4338ca;
+      font-weight:800; padding:10px 12px; border-radius:999px;
+      cursor:pointer; user-select:none;
+      transition: background .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .chip:hover, .chip:focus{
+      outline:none; border-color:#7c3aed;
+      box-shadow:0 0 0 4px rgba(124,58,237,.14);
+      background:rgba(124,58,237,.06);
+    }
+    .chip.active{ background:#7c3aed; color:#fff; border-color:#7c3aed; }
+
+    .sort{ display:flex; gap:10px; align-items:center; }
+    .sort label{ font-weight:800; color:#4338ca; font-size:.95rem; }
+    .sort select{
+      padding:10px 12px; border-radius:14px; border:2px solid #c7d2fe;
+      font-family:'Poppins',sans-serif; font-weight:700; color:#334155; background:#fff; outline:none;
+    }
+    .sort select:focus{ border-color:#7c3aed; box-shadow:0 0 0 4px rgba(124,58,237,.14); }
+
+    .results-meta{ text-align:center; color:#64748b; font-weight:700; margin:14px 0 0; padding:0 16px; }
+
+    .section{ margin:34px 0 80px; padding:0 16px; }
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:24px; justify-items:center;
+    }
+    .product{
+      width:100%; max-width:320px;
+      background:#fff; border-radius:24px; overflow:hidden; position:relative;
+      box-shadow:0 10px 30px rgba(99,102,241,.12);
+      transition: transform .25s ease, box-shadow .25s ease;
+      display:flex; flex-direction:column;
+    }
+    .product:hover{ transform:translateY(-8px); box-shadow:0 15px 40px rgba(139,92,246,.25); }
+    .badge{
+      position:absolute; top:14px; left:14px;
+      background:rgba(17,24,39,.85); color:#fff;
+      font-size:.78rem; font-weight:900; padding:6px 10px; border-radius:999px; z-index:2;
+    }
+    .thumb img{ width:100%; height:210px; }
+    .product-content{ padding:16px 16px 14px; display:flex; flex-direction:column; gap:10px; flex-grow:1; }
+    .product h3{ margin:0; font-size:1.25rem; font-weight:900; color:#4338ca; }
+    .product p{ margin:0; color:#64748b; font-weight:600; font-size:.95rem; flex-grow:1; }
+    .meta-row{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    .price{ font-weight:900; color:#111827; }
+    .rating{ display:flex; align-items:center; gap:6px; font-weight:900; color:#4338ca; font-size:.9rem; }
+    .rating .material-icons{ font-size:18px; }
+    .actions{ display:flex; gap:10px; margin-top:6px; }
+    .view-btn{
+      flex:1; background:#fff; border:2px solid #c7d2fe; color:#4338ca; font-weight:900;
+      padding:10px 0; border-radius:14px; cursor:pointer;
+    }
+    .view-btn:hover, .view-btn:focus{
+      outline:none; border-color:#7c3aed; box-shadow:0 0 0 4px rgba(124,58,237,.14); background:rgba(124,58,237,.06);
+    }
+    .add-to-cart-btn{
+      flex:1.2; background:#7c3aed; border:none; color:#fff; font-weight:900;
+      padding:10px 0; border-radius:14px; cursor:pointer;
+    }
+    .add-to-cart-btn:hover, .add-to-cart-btn:focus{
+      outline:none; background:#5b21b6; box-shadow:0 0 0 4px rgba(124,58,237,.18);
+    }
+
+    footer{
+      text-align:center; padding:26px 16px; color:#475569;
+      background:rgba(255,255,255,.65); border-top:1px solid rgba(148,163,184,.35);
+    }
+
+    @media (max-width: 900px){
+      .controls-card{ justify-content:center; }
+      .chip-row{ justify-content:center; }
+    }
+    @media (max-width: 767px){
+      header{ padding:0 16px; }
+      nav a{ margin-left:10px; font-size:.9rem; }
+      .hero{ padding:75px 0 50px; }
+      .products{ grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; }
+      .product{ max-width:360px; }
+      .sort{ width:100%; justify-content:center; }
+    }
+    @media (max-width: 480px){
+      .container{ padding:0 16px; }
+      nav a{ margin-left:8px; font-size:.85rem; }
+      .controls-wrap{ padding:0 16px; }
+    }
+  </style>
+<link href="styles.css" rel="stylesheet"/></head>
+<body>
+<header>
+<h1>Garg Glasses Co.</h1>
+<nav aria-label="Primary navigation">
+<a data-nav="index.html" href="index.html">Home</a>
+<a data-nav="products.html" href="products.html">Products</a>
+<a data-nav="about.html" href="about.html">About</a>
+<a data-nav="contact.html" href="contact.html">Contact</a>
+<a data-nav="faq.html" href="faq.html">FAQ</a>
+<a data-nav="cart.html" href="cart.html">Cart</a>
+<a data-nav="login.html" href="login.html" id="navAuthLink">Login</a>
+</nav>
+</header>
+<section class="hero" role="banner">
+<div class="container">
+<h2>Products &amp; Bestsellers</h2>
+<p>Explore premium mirrors and glass decor designed for modern homes, hotels, and workspaces.</p>
+</div>
+</section>
+<div class="controls-wrap">
+<div aria-label="Product filters and search" class="controls-card container">
+<div class="search">
+<input aria-label="Search products" id="searchInput" placeholder="Search products..." type="text"/>
+<span aria-hidden="true" class="material-icons">search</span>
+</div>
+<div aria-label="Category filters" class="chip-row">
+<button class="chip active" data-filter="all" type="button">All</button>
+<button class="chip" data-filter="wall" type="button">Wall</button>
+<button class="chip" data-filter="standing" type="button">Standing</button>
+<button class="chip" data-filter="decor" type="button">Decor</button>
+<button class="chip" data-filter="bathroom" type="button">Bathroom</button>
+</div>
+<div class="sort">
+<label for="sortSelect">Sort</label>
+<select aria-label="Sort products" id="sortSelect">
+<option value="popular">Popular</option>
+<option value="priceLow">Price: Low → High</option>
+<option value="priceHigh">Price: High → Low</option>
+<option value="name">Name: A → Z</option>
+</select>
+</div>
+</div>
+<p aria-live="polite" class="results-meta" id="resultsMeta"></p>
+</div>
+<main class="section">
+<div class="container">
+<div aria-label="Product list" class="products" id="productsGrid">
+<!-- These link to the product pages below -->
+<article class="product" data-category="wall" data-id="tuffen" data-popular="10" data-price="1299">
+<span class="badge">Bestseller</span>
+<a class="thumb" href="product_tuffen.html">
+<img alt="Tuffen mirror" loading="lazy" src="images.jpeg"/>
+</a>
+<div class="product-content">
+<h3>Tuffen</h3>
+<p>Ultra wall mirror with sleek modern finish.</p>
+<div class="meta-row">
+<div class="rating"><span class="material-icons">star</span>4.6</div>
+<div class="price">₹1,299</div>
+</div>
+<div class="actions">
+<button class="view-btn" data-link="product_tuffen.html" type="button">View</button>
+<button class="add-to-cart-btn" type="button">Add to Cart</button>
+</div>
+</div>
+</article>
+<article class="product" data-category="decor" data-id="lightning" data-popular="9" data-price="999">
+<span class="badge">New</span>
+<a class="thumb" href="product_lightning.html">
+<img alt="Lightning mirror" loading="lazy" src="lightning-mirror-1627967123-5924973.jpeg"/>
+</a>
+<div class="product-content">
+<h3>Lightning</h3>
+<p>Clear decorative mirror with premium shine.</p>
+<div class="meta-row">
+<div class="rating"><span class="material-icons">star</span>4.4</div>
+<div class="price">₹999</div>
+</div>
+<div class="actions">
+<button class="view-btn" data-link="product_lightning.html" type="button">View</button>
+<button class="add-to-cart-btn" type="button">Add to Cart</button>
+</div>
+</div>
+</article>
+<article class="product" data-category="decor" data-id="metart" data-popular="11" data-price="1799">
+<span class="badge">Premium</span>
+<a class="thumb" href="product_metart.html">
+<img alt="Metart Crystal mirror" loading="lazy" src="Diamond-Art-Deco-Glass-Mirror-74x122cm.jpg"/>
+</a>
+<div class="product-content">
+<h3>Metart Crystal</h3>
+<p>Crystal deco mirror for elegant interiors.</p>
+<div class="meta-row">
+<div class="rating"><span class="material-icons">star</span>4.8</div>
+<div class="price">₹1,799</div>
+</div>
+<div class="actions">
+<button class="view-btn" data-link="product_metart.html" type="button">View</button>
+<button class="add-to-cart-btn" type="button">Add to Cart</button>
+</div>
+</div>
+</article>
+<article class="product" data-category="bathroom" data-id="halo" data-popular="8" data-price="1499">
+<span class="badge">Best Value</span>
+<a class="thumb" href="product_halo.html">
+<img alt="Halo round mirror" loading="lazy" src="images.jpg"/>
+</a>
+<div class="product-content">
+<h3>Halo Round</h3>
+<p>Minimal round mirror for bathroom &amp; vanity.</p>
+<div class="meta-row">
+<div class="rating"><span class="material-icons">star</span>4.5</div>
+<div class="price">₹1,499</div>
+</div>
+<div class="actions">
+<button class="view-btn" data-link="product_halo.html" type="button">View</button>
+<button class="add-to-cart-btn" type="button">Add to Cart</button>
+</div>
+</div>
+</article>
+<article class="product" data-category="standing" data-id="vogue" data-popular="12" data-price="2499">
+<span class="badge">Trending</span>
+<a class="thumb" href="product_vogue.html">
+<img alt="Vogue standing mirror" loading="lazy" src="Standingmirrors.004_1.webp"/>
+</a>
+<div class="product-content">
+<h3>Vogue Standing</h3>
+<p>Full-length standing mirror for bedrooms.</p>
+<div class="meta-row">
+<div class="rating"><span class="material-icons">star</span>4.7</div>
+<div class="price">₹2,499</div>
+</div>
+<div class="actions">
+<button class="view-btn" data-link="product_vogue.html" type="button">View</button>
+<button class="add-to-cart-btn" type="button">Add to Cart</button>
+</div>
+</div>
+</article>
+<article class="product" data-category="wall" data-id="arc" data-popular="7" data-price="1399">
+<span class="badge">Minimal</span>
+<a class="thumb" href="product_arc.html">
+<img alt="Arc arched mirror" loading="lazy" src="VDR-542_29_x_29.webp"/>
+</a>
+<div class="product-content">
+<h3>Arc Arched</h3>
+<p>Arched wall mirror with premium finish.</p>
+<div class="meta-row">
+<div class="rating"><span class="material-icons">star</span>4.3</div>
+<div class="price">₹1,399</div>
+</div>
+<div class="actions">
+<button class="view-btn" data-link="product_arc.html" type="button">View</button>
+<button class="add-to-cart-btn" type="button">Add to Cart</button>
+</div>
+</div>
+</article>
+<article class="product" data-category="decor" data-id="gridline" data-popular="6" data-price="1599">
+<span class="badge">Designer</span>
+<a class="thumb" href="product_gridline.html">
+<img alt="Gridline designer mirror" loading="lazy" src="images grid.jpg"/>
+</a>
+<div class="product-content">
+<h3>Gridline</h3>
+<p>Designer grid mirror for statement walls.</p>
+<div class="meta-row">
+<div class="rating"><span class="material-icons">star</span>4.2</div>
+<div class="price">₹1,599</div>
+</div>
+<div class="actions">
+<button class="view-btn" data-link="product_gridline.html" type="button">View</button>
+<button class="add-to-cart-btn" type="button">Add to Cart</button>
+</div>
+</div>
+</article>
+<article class="product" data-category="bathroom" data-id="edge" data-popular="5" data-price="1199">
+<span class="badge">Compact</span>
+<a class="thumb" href="product_edge.html">
+<img alt="Edge bathroom mirror" loading="lazy" src="images edge.jpg"/>
+</a>
+<div class="product-content">
+<h3>Edge Compact</h3>
+<p>Compact bathroom mirror with clean edges.</p>
+<div class="meta-row">
+<div class="rating"><span class="material-icons">star</span>4.1</div>
+<div class="price">₹1,199</div>
+</div>
+<div class="actions">
+<button class="view-btn" data-link="product_edge.html" type="button">View</button>
+<button class="add-to-cart-btn" type="button">Add to Cart</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer>
+<p>© 2025 Garg Glasses Co. | All rights reserved</p>
+</footer>
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const sortSelect = document.getElementById('sortSelect');
+    const grid = document.getElementById('productsGrid');
+    const resultsMeta = document.getElementById('resultsMeta');
+
+    function getProducts(){ return Array.from(grid.querySelectorAll('.product')); }
+    function currentFilter(){
+      const active = chips.find(c => c.classList.contains('active'));
+      return active ? active.dataset.filter : 'all';
+    }
+
+    function apply(){
+      const q = (searchInput.value || '').toLowerCase().trim();
+      const filter = currentFilter();
+      const products = getProducts();
+
+      products.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        const cat  = (card.dataset.category || '').toLowerCase();
+
+        const matchQuery = !q || name.includes(q) || desc.includes(q);
+        const matchFilter = (filter === 'all') || (cat === filter);
+        card.style.display = (matchQuery && matchFilter) ? 'flex' : 'none';
+      });
+
+      const visible = products.filter(p => p.style.display !== 'none');
+      const sortBy = sortSelect.value;
+
+      visible.sort((a,b) => {
+        const aPrice = Number(a.dataset.price || 0);
+        const bPrice = Number(b.dataset.price || 0);
+        const aName  = a.querySelector('h3').textContent.trim().toLowerCase();
+        const bName  = b.querySelector('h3').textContent.trim().toLowerCase();
+        const aPop   = Number(a.dataset.popular || 0);
+        const bPop   = Number(b.dataset.popular || 0);
+
+        if (sortBy === 'priceLow') return aPrice - bPrice;
+        if (sortBy === 'priceHigh') return bPrice - aPrice;
+        if (sortBy === 'name') return aName.localeCompare(bName);
+        return bPop - aPop; // popular
+      });
+
+      visible.forEach(el => grid.appendChild(el));
+
+      const total = products.length;
+      const shown = visible.length;
+      resultsMeta.textContent = (q || filter !== 'all')
+        ? `Showing ${shown} of ${total} products${q ? ` for "${q}"` : ""}${filter !== 'all' ? ` • Category: ${filter}` : ""}`
+        : '';
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        apply();
+      });
+    });
+
+    searchInput.addEventListener('input', apply);
+    sortSelect.addEventListener('change', apply);
+
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const link = e.currentTarget.getAttribute('data-link');
+        if (link) window.location.href = link;
+      });
+    });
+
+        });
+
+    apply();
+  </script>
+
+<script src="main.js"></script></body>
+</html>

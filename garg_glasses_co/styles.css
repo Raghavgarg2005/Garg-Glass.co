@@ -1,0 +1,587 @@
+/* FILE: styles.css */
+/* Garg Glasses Co. - Common Styles for ALL pages (index + products + about + contact + faq + login + product pages) */
+
+/* =========================
+   1) Reset + Base
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root{
+  --bg1:#e0e7ff;
+  --bg2:#c7d2fe;
+
+  --text:#1e293b;
+  --muted:#64748b;
+
+  --brand:#4f46e5;
+  --brand2:#4338ca;
+  --accent:#7c3aed;
+  --accent2:#5b21b6;
+
+  --card:#ffffff;
+  --cardGlass:rgba(255,255,255,0.92);
+
+  --border:#e5e7eb;
+  --border2:#cbd5e1;
+
+  --shadow:0 15px 40px rgb(139 92 246 / 0.18);
+  --shadowSoft:0 10px 30px rgb(99 102 241 / 0.12);
+
+  --radius:26px;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+  min-height:100vh;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* Helpers */
+.hidden{ display:none !important; }
+.center{ text-align:center; }
+.muted{ color:var(--muted); font-weight:600; }
+
+/* =========================
+   2) Header + Navbar (Common)
+========================= */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255 255 255 / 0.72);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid #d1d5db;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  box-shadow:0 2px 8px rgb(0 0 0 / 0.04);
+}
+
+header h1{
+  margin:0;
+  font-weight:800;
+  font-size:clamp(1.5rem,2vw,2rem);
+  color:var(--brand);
+  letter-spacing:1.2px;
+  user-select:none;
+  cursor:default;
+}
+
+nav a{
+  margin-left:24px;
+  font-weight:600;
+  font-size:1rem;
+  padding:8px 10px;
+  border-radius:8px;
+  transition:background-color .2s ease, color .2s ease;
+  color:#334155;
+}
+
+nav a:hover,
+nav a:focus{
+  background:var(--brand2);
+  color:#fff;
+  outline:none;
+  box-shadow:0 0 0 2px var(--brand2);
+}
+
+.active-link{
+  background:var(--brand2);
+  color:#fff !important;
+}
+
+/* Optional icon button (cart) */
+.icon-btn{
+  background:none;
+  border:none;
+  cursor:pointer;
+  margin-left:16px;
+  user-select:none;
+  color:var(--accent);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  width:44px;
+  height:44px;
+  border-radius:10px;
+}
+.icon-btn:hover,
+.icon-btn:focus{
+  outline:none;
+  box-shadow:0 0 0 3px rgb(124 58 237 / 0.25);
+  background:rgba(124 58 237 / 0.08);
+}
+
+.cart-badge{
+  position:absolute;
+  top:6px;
+  right:6px;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  border-radius:999px;
+  background:#e11d48;
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+}
+
+/* =========================
+   3) Hero (Index)
+========================= */
+.hero{
+  padding:110px 0 70px;
+  text-align:center;
+  background:linear-gradient(135deg,#6366f1,#8b5cf6);
+  color:#fff;
+  user-select:none;
+}
+
+.hero h1{
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  font-weight:900;
+  line-height:1.1;
+  margin:0 0 16px;
+  text-shadow:0 2px 10px rgb(0 0 0 / 0.2);
+}
+
+.hero p{
+  font-size:clamp(1.125rem,3vw,1.5rem);
+  font-weight:500;
+  letter-spacing:.04em;
+  max-width:700px;
+  margin:0 auto 24px;
+  text-shadow:0 1px 6px rgb(0 0 0 / 0.1);
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* =========================
+   4) Buttons (Common)
+========================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:16px;
+  font-weight:900;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+  user-select:none;
+  min-width:170px;
+  font-family:'Poppins', sans-serif;
+}
+
+.btn:focus{
+  outline:none;
+  box-shadow:0 0 0 4px rgb(124 58 237 / 0.18);
+}
+
+.btn-primary{
+  background:#111827;
+  color:#fff;
+  box-shadow:0 10px 25px rgb(0 0 0 / 0.25);
+}
+.btn-primary:hover{ transform:translateY(-2px); }
+
+.btn-secondary{
+  background:transparent;
+  color:#fff;
+  border-color:rgba(255 255 255 / 0.6);
+}
+.btn-secondary:hover{ background:rgba(255 255 255 / 0.12); }
+
+.btn-accent{
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 10px 25px rgb(124 58 237 / 0.25);
+}
+.btn-accent:hover{ background:var(--accent2); transform:translateY(-1px); }
+
+.btn-light{
+  background:#fff;
+  border:2px solid #c7d2fe;
+  color:var(--brand2);
+}
+.btn-light:hover{
+  background:rgba(124 58 237 / 0.06);
+  border-color:var(--accent);
+}
+
+/* =========================
+   5) Sections + Titles (Common)
+========================= */
+.section{
+  margin:0;
+  padding:48px 16px;
+}
+
+.section h2{
+  font-weight:900;
+  font-size:clamp(1.75rem,3vw,2.25rem);
+  color:var(--brand2);
+  margin:0 0 22px;
+  text-align:center;
+  letter-spacing:.04em;
+  user-select:none;
+}
+
+/* Page header (for about/contact/faq/login etc.) */
+.page-hero{
+  padding:56px 0 16px;
+  text-align:center;
+}
+.page-hero h2{
+  margin:0 0 10px;
+  font-weight:900;
+  color:var(--accent);
+  font-size:clamp(2rem,3.5vw,2.6rem);
+  text-shadow:0 2px 10px rgb(124 58 237 / 0.12);
+}
+.page-hero p{
+  margin:0 auto;
+  max-width:760px;
+  color:#475569;
+  font-weight:600;
+}
+
+/* =========================
+   6) Cards (Common)
+========================= */
+.card{
+  background:var(--cardGlass);
+  backdrop-filter:saturate(180%) blur(12px);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+}
+
+.card-soft{
+  background:rgba(255,255,255,0.9);
+  border:1px solid var(--border);
+  border-radius:24px;
+  box-shadow:var(--shadowSoft);
+  padding:18px;
+}
+
+/* =========================
+   7) Product Grid + Product Card (Index + Products)
+========================= */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  gap:24px;
+  justify-items:center;
+}
+
+.product{
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 10px 30px rgb(99 102 241 / 0.12);
+  width:100%;
+  max-width:320px;
+  transition:transform .25s ease, box-shadow .25s ease;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+
+.product:hover,
+.product:focus-within{
+  transform:translateY(-8px);
+  box-shadow:0 15px 40px rgb(139 92 246 / 0.25);
+}
+
+.badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:rgba(17 24 39 / 0.85);
+  color:#fff;
+  font-size:.78rem;
+  font-weight:900;
+  padding:6px 10px;
+  border-radius:999px;
+  letter-spacing:.02em;
+}
+
+.product a{
+  padding:18px 18px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  height:100%;
+  flex-grow:1;
+}
+
+.product img{
+  width:100%;
+  aspect-ratio:4 / 3;
+  border-radius:18px;
+  box-shadow:0 8px 20px rgb(147 197 253 / 0.28);
+}
+
+.product h3{
+  margin:0;
+  font-weight:900;
+  font-size:1.25rem;
+  color:#111827;
+}
+
+.product .sub{
+  margin:0;
+  font-weight:700;
+  font-size:.95rem;
+  color:var(--muted);
+}
+
+.meta-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:2px;
+}
+
+.price{
+  font-weight:900;
+  color:#111827;
+}
+
+.rating{
+  font-size:.9rem;
+  color:var(--brand2);
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.ship{
+  font-size:.85rem;
+  color:var(--muted);
+  margin:0;
+  font-weight:700;
+}
+
+.card-actions{
+  display:flex;
+  gap:10px;
+  padding:0 18px 18px;
+}
+
+.view-btn{
+  flex:1;
+  background:#fff;
+  border:2px solid #c7d2fe;
+  color:var(--brand2);
+  font-weight:900;
+  padding:10px 0;
+  border-radius:14px;
+  cursor:pointer;
+  font-family:'Poppins', sans-serif;
+}
+
+.view-btn:hover,
+.view-btn:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 4px rgb(124 58 237 / 0.15);
+  background:rgba(124 58 237 / 0.06);
+}
+
+.add-to-cart-btn{
+  flex:1.2;
+  background:var(--accent);
+  border:none;
+  color:#fff;
+  font-weight:900;
+  padding:10px 0;
+  border-radius:14px;
+  font-size:1rem;
+  cursor:pointer;
+  font-family:'Poppins', sans-serif;
+}
+
+.add-to-cart-btn:hover,
+.add-to-cart-btn:focus{
+  background:var(--accent2);
+  outline:none;
+  box-shadow:0 0 0 4px rgb(124 58 237 / 0.2);
+}
+
+/* =========================
+   8) Forms (Contact/Login/Newsletter)
+========================= */
+form{ width:100%; }
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:14px;
+}
+
+label{
+  font-weight:900;
+  color:var(--brand2);
+  font-size:.95rem;
+}
+
+input,
+textarea,
+select{
+  padding:14px 14px;
+  border-radius:14px;
+  border:2px solid var(--border2);
+  font-family:'Poppins', sans-serif;
+  font-size:1rem;
+  background:#fff;
+  color:#111827;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 4px rgb(124 58 237 / 0.18);
+}
+
+textarea{ resize:vertical; min-height:140px; }
+
+.form-feedback{
+  margin-top:10px;
+  font-weight:900;
+  display:none;
+  text-align:center;
+}
+
+/* =========================
+   9) FAQ Accordion (Optional)
+========================= */
+.faq-card{
+  background:var(--cardGlass);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.faq-item{
+  border-top:1px solid var(--border);
+}
+.faq-item:first-child{ border-top:none; }
+
+.faq-question{
+  width:100%;
+  text-align:left;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  padding:16px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-weight:900;
+  color:#111827;
+  font-size:1.02rem;
+  font-family:'Poppins', sans-serif;
+  transition:background-color .2s ease;
+}
+
+.faq-question:hover{ background:rgba(124 58 237 / 0.06); }
+.faq-question:focus{
+  outline:none;
+  box-shadow:inset 0 0 0 3px rgb(124 58 237 / 0.18);
+  background:rgba(124 58 237 / 0.06);
+}
+
+.faq-answer{
+  padding:0 18px 16px 18px;
+  color:#475569;
+  font-weight:700;
+  display:none;
+}
+
+.faq-item.open .faq-answer{ display:block; }
+
+/* =========================
+   10) Footer (Common)
+========================= */
+footer{
+  text-align:center;
+  padding:26px 16px;
+  color:#475569;
+  background:rgba(255 255 255 / 0.65);
+  border-top:1px solid var(--border);
+  user-select:none;
+}
+
+/* =========================
+   11) Responsive (Common)
+========================= */
+@media (max-width: 900px){
+  header{ padding:0 16px; }
+  nav a{ margin-left:12px; font-size:.95rem; }
+}
+
+@media (max-width: 767px){
+  .products{ grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); }
+}
+
+@media (max-width: 480px){
+  nav a{ margin-left:10px; font-size:.85rem; }
+  .container{ padding:0 16px; }
+}

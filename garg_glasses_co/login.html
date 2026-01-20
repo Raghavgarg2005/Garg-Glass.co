@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Garg Glasses Co.</title>
+<!-- Same as index -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+    /* Base (match index) */
+    *, *::before, *::after { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);
+      color:#1e293b;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    a{ text-decoration:none; color:inherit; }
+    .container{ max-width:1100px; margin:0 auto; padding:0 24px; }
+
+    /* Header (same as index) */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255 255 255 / 0.72);
+      backdrop-filter:saturate(180%) blur(12px);
+      border-bottom:1px solid #d1d5db;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 32px;
+      box-shadow:0 2px 8px rgb(0 0 0 / 0.04);
+    }
+    header h1{
+      margin:0;
+      font-weight:800;
+      font-size:clamp(1.5rem,2vw,2rem);
+      color:#4f46e5;
+      letter-spacing:1.2px;
+      user-select:none;
+      cursor:default;
+    }
+    nav a{
+      margin-left:24px;
+      font-weight:600;
+      font-size:1rem;
+      padding:8px 10px;
+      border-radius:8px;
+      transition:background-color .2s ease, color .2s ease;
+      color:#334155;
+    }
+    nav a:hover,
+    nav a:focus{
+      background:#4338ca;
+      color:#fff;
+      outline:none;
+      box-shadow:0 0 0 2px #4338ca;
+    }
+    .active-link{
+      background:#4338ca;
+      color:#fff !important;
+    }
+
+    /* Page layout */
+    main{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:36px 16px 44px;
+    }
+
+    .login-shell{
+      width:100%;
+      max-width:980px;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:saturate(180%) blur(12px);
+      border:1px solid #e5e7eb;
+      border-radius:26px;
+      box-shadow:0 15px 40px rgb(139 92 246 / 0.18);
+      padding:24px;
+    }
+
+    /* Left: form card */
+    .title{
+      margin:0 0 6px;
+      color:#7c3aed;
+      font-weight:900;
+      font-size:clamp(1.8rem,2.8vw,2.2rem);
+      text-shadow:0 2px 10px rgb(124 58 237 / 0.10);
+    }
+    .subtitle{
+      margin:0 0 18px;
+      color:#64748b;
+      font-weight:700;
+    }
+
+    form{ display:flex; flex-direction:column; gap:14px; }
+    label{
+      font-weight:800;
+      color:#4338ca;
+      font-size:.95rem;
+      margin-bottom:6px;
+      display:block;
+    }
+    input{
+      width:100%;
+      padding:14px 14px;
+      border-radius:14px;
+      border:2px solid #cbd5e1;
+      font-family:'Poppins',sans-serif;
+      font-size:1rem;
+      background:#fff;
+      color:#111827;
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+    input:focus{
+      outline:none;
+      border-color:#7c3aed;
+      box-shadow:0 0 0 4px rgb(124 58 237 / 0.18);
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:2px;
+    }
+    .small-link{
+      color:#4338ca;
+      font-weight:800;
+      font-size:.92rem;
+      padding:6px 8px;
+      border-radius:10px;
+    }
+    .small-link:hover,
+    .small-link:focus{
+      outline:none;
+      background:rgba(124 58 237 / 0.08);
+      box-shadow:0 0 0 3px rgb(124 58 237 / 0.16);
+    }
+
+    .btn{
+      border:none;
+      cursor:pointer;
+      font-weight:900;
+      border-radius:16px;
+      padding:14px 16px;
+      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition:transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+      margin-top:4px;
+    }
+    .btn-primary{
+      background:#7c3aed;
+      color:#fff;
+      box-shadow:0 10px 25px rgb(124 58 237 / 0.25);
+    }
+    .btn-primary:hover{ background:#5b21b6; transform:translateY(-1px); }
+    .btn-primary:focus{ outline:none; box-shadow:0 0 0 4px rgb(124 58 237 / 0.20); }
+
+    .form-feedback{
+      margin:8px 0 0;
+      font-weight:900;
+      display:none;
+      text-align:center;
+    }
+
+    /* Right: info/benefits card */
+    .info h3{
+      margin:0 0 12px;
+      font-weight:900;
+      color:#111827;
+      font-size:1.2rem;
+    }
+    .info p{
+      margin:0 0 14px;
+      color:#64748b;
+      font-weight:700;
+    }
+    .benefit{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px;
+      border-radius:18px;
+      border:1px solid #e5e7eb;
+      background:rgba(99 102 241 / 0.05);
+      margin-bottom:12px;
+    }
+    .benefit .material-icons{ color:#4338ca; }
+    .benefit strong{ display:block; color:#111827; }
+    .benefit span{ display:block; color:#64748b; font-weight:700; }
+
+    /* Footer (match index feel) */
+    footer{
+      text-align:center;
+      padding:26px 16px;
+      color:#475569;
+      background:rgba(255 255 255 / 0.65);
+      border-top:1px solid #e5e7eb;
+      user-select:none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      header{ padding:0 16px; }
+      nav a{ margin-left:12px; font-size:.95rem; }
+      .login-shell{ grid-template-columns:1fr; }
+    }
+    @media (max-width: 480px){
+      nav a{ margin-left:10px; font-size:.85rem; }
+      .card{ padding:18px; border-radius:22px; }
+    }
+  </style>
+<link href="styles.css" rel="stylesheet"/></head>
+<body>
+<!-- Header matches index links (not changing any hrefs) -->
+<header>
+<h1>Garg Glasses Co.</h1>
+<nav aria-label="Primary navigation">
+<a data-nav="index.html" href="index.html">Home</a>
+<a data-nav="products.html" href="products.html">Products</a>
+<a data-nav="about.html" href="about.html">About</a>
+<a data-nav="contact.html" href="contact.html">Contact</a>
+<a data-nav="faq.html" href="faq.html">FAQ</a>
+<a data-nav="cart.html" href="cart.html">Cart</a>
+<a data-nav="login.html" href="login.html" id="navAuthLink">Login</a>
+</nav>
+</header>
+<main aria-label="Login page" role="main">
+<div class="login-shell">
+<!-- Form card -->
+<section aria-labelledby="login-title" class="card">
+<h2 class="title" id="login-title">Welcome back</h2>
+<p class="subtitle">Login to continue.</p>
+<form id="loginForm" novalidate="">
+<div>
+<label for="emailInput">Email</label>
+<input aria-required="true" autocomplete="email" id="emailInput" name="email" placeholder="Enter your email" required="" type="email"/>
+</div>
+<div>
+<label for="passwordInput">Password</label>
+<input aria-required="true" autocomplete="current-password" id="passwordInput" name="password" placeholder="Enter your password" required="" type="password"/>
+</div>
+<div class="row">
+<a class="small-link" href="contact.html">Need help?</a>
+<a class="small-link" href="faq.html">Read FAQ</a>
+<a class="small-link" href="signup.html">Create account</a></div>
+<button class="btn btn-primary" type="submit">
+<span aria-hidden="true" class="material-icons">login</span>
+            Login
+          </button>
+<p aria-live="polite" class="form-feedback" id="formFeedback" role="alert"></p>
+</form>
+</section>
+<!-- Info card -->
+<aside aria-label="Login information" class="card info">
+<h3>Why login?</h3>
+<p>In future, login will help you track orders, save favourites, and get faster support.</p>
+<div class="benefit">
+<span aria-hidden="true" class="material-icons">receipt_long</span>
+<div>
+<strong>Order Tracking</strong>
+<span>See your order history in one place.</span>
+</div>
+</div>
+<div class="benefit">
+<span aria-hidden="true" class="material-icons">favorite</span>
+<div>
+<strong>Saved Products</strong>
+<span>Bookmark mirrors you love for later.</span>
+</div>
+</div>
+<div class="benefit">
+<span aria-hidden="true" class="material-icons">support_agent</span>
+<div>
+<strong>Quick Support</strong>
+<span>Faster help with your saved details.</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<footer aria-label="Footer copyright" role="contentinfo">
+    © 2025 Garg Glasses Co. | All rights reserved
+  </footer>
+<script src="main.js"></script></body>
+</html>

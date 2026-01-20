@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Metart Crystal - Garg Glasses Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+    *,*::before,*::after{box-sizing:border-box;}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);color:#1e293b;}
+    a{text-decoration:none;color:inherit;}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+    header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid #d1d5db;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+    header h1{margin:0;font-weight:800;color:#4f46e5;letter-spacing:1.1px;}
+    nav{display:flex;gap:10px;flex-wrap:wrap;}
+    nav a{padding:8px 10px;border-radius:8px;font-weight:600;color:#334155;}
+    nav a:hover,nav a:focus{background:#4338ca;color:#fff;outline:none;box-shadow:0 0 0 2px #4338ca;}
+    .hero{padding:70px 0 30px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;}
+    .hero h2{margin:0 0 10px;font-weight:900;font-size:clamp(1.8rem,4vw,3rem);}
+    .hero p{margin:0;max-width:700px;opacity:.95;}
+    .card{margin-top:-22px;background:rgba(255,255,255,.9);border:1px solid #e5e7eb;border-radius:24px;box-shadow:0 10px 30px rgba(99,102,241,.12);overflow:hidden;}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:18px;}
+    .imgbox img{width:100%;height:360px;object-fit:cover;border-radius:18px;}
+    .title{margin:0;font-size:2rem;font-weight:900;color:#4338ca;}
+    .sub{margin:6px 0 10px;color:#64748b;font-weight:700;}
+    .price{font-weight:900;font-size:1.3rem;color:#111827;margin:10px 0;}
+    .bullets{margin:12px 0 0;padding-left:18px;color:#334155;font-weight:600;}
+    .bullets li{margin:8px 0;}
+    .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;}
+    .btn{border:none;border-radius:14px;padding:12px 16px;font-weight:900;cursor:pointer;}
+    .btn-primary{background:#7c3aed;color:#fff;}
+    .btn-primary:hover{background:#5b21b6;}
+    .btn-ghost{background:#fff;border:2px solid #c7d2fe;color:#4338ca;}
+    .btn-ghost:hover{background:rgba(124,58,237,.06);border-color:#7c3aed;}
+    .specs{padding:18px;border-top:1px solid #e5e7eb;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+    .spec{background:rgba(255,255,255,.7);border:1px solid rgba(148,163,184,.35);border-radius:18px;padding:14px;}
+    .spec strong{display:block;color:#111827;}
+    .spec span{color:#64748b;font-weight:700;font-size:.95rem;}
+    footer{text-align:center;padding:26px 16px;margin-top:40px;color:#475569;background:rgba(255,255,255,.65);border-top:1px solid rgba(148,163,184,.35);}
+    @media (max-width:900px){.grid{grid-template-columns:1fr;}.imgbox img{height:260px;}.specs{grid-template-columns:1fr;}header{padding:0 16px;}}
+  </style>
+<link href="styles.css" rel="stylesheet"/></head>
+<body>
+<header>
+<h1>Garg Glasses Co.</h1>
+<nav aria-label="Primary navigation">
+<a data-nav="index.html" href="index.html">Home</a>
+<a data-nav="products.html" href="products.html">Products</a>
+<a data-nav="about.html" href="about.html">About</a>
+<a data-nav="contact.html" href="contact.html">Contact</a>
+<a data-nav="faq.html" href="faq.html">FAQ</a>
+<a data-nav="cart.html" href="cart.html">Cart</a>
+<a data-nav="login.html" href="login.html" id="navAuthLink">Login</a>
+</nav>
+</header>
+<section class="hero">
+<div class="container">
+<h2>Metart Crystal</h2>
+<p>Crystal deco mirror for premium, elegant interiors.</p>
+</div>
+</section>
+<main class="container">
+<section class="card">
+<div class="grid">
+<div class="imgbox">
+<img alt="Metart Crystal mirror" src="Diamond-Art-Deco-Glass-Mirror-74x122cm.jpg"/>
+</div>
+<div>
+<h3 class="title">Metart Crystal</h3>
+<div class="sub">Category: Decor • Finish: Crystal</div>
+<div class="price">₹1,799</div>
+<ul class="bullets">
+<li>Luxury crystal-inspired design</li>
+<li>Perfect for statement walls &amp; premium decor</li>
+<li>High shine with durable build quality</li>
+</ul>
+<div class="btnrow">
+<button class="btn btn-primary add-to-cart-btn" data-id="metart" data-img="Diamond-Art-Deco-Glass-Mirror-74x122cm.jpg" data-price="1799" data-title="Metart Crystal" id="addBtn" type="button">
+<span class="material-icons" style="font-size:18px; vertical-align:-3px;">add_shopping_cart</span>
+            Add to Cart
+          </button>
+<a class="btn btn-ghost" href="products.html">Back to Products</a>
+</div>
+</div>
+</div>
+<div class="specs">
+<div class="spec"><strong>Size</strong><span>30 x 22 in</span></div>
+<div class="spec"><strong>Mount</strong><span>Wall mount</span></div>
+<div class="spec"><strong>Best For</strong><span>Showroom / Living</span></div>
+</div>
+</section>
+</main>
+<footer>© 2025 Garg Glasses Co. | All rights reserved</footer>
+<script src="main.js"></script></body>
+</html>

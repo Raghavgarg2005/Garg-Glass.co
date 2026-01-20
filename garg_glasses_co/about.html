@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us - Garg Glasses Co.</title>
+<!-- Keep your existing CSS link -->
+<link href="styles.css" rel="stylesheet"/>
+<!-- Match index look (fonts + icons) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<style>
+    /* ✅ Make this page visually consistent with your Index page (reflective + responsive)
+       This does NOT change your links, only improves UI. */
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body{
+      margin:0;
+      font-family:'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+      color:#1e293b;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height:1.65;
+      scroll-behavior:smooth;
+    }
+
+    a{ text-decoration:none; color:inherit; }
+
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Accessibility */
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:10px;
+      background:#111827;
+      color:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      z-index:3000;
+    }
+    .skip-link:focus{ left:16px; outline:none; }
+
+    /* ✅ Same header style as Index */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid #d1d5db;
+      height: 64px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 0 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    header h1{
+      margin:0;
+      font-weight: 800;
+      font-size: clamp(1.3rem, 2vw, 1.9rem);
+      color: #4f46e5;
+      letter-spacing: 1.1px;
+      user-select:none;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    nav a{
+      margin-left: 16px;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: #334155;
+      transition: background-color .2s ease, color .2s ease;
+    }
+
+    nav a:hover,
+    nav a:focus{
+      background: #4338ca;
+      color: white;
+      outline: none;
+      box-shadow: 0 0 0 2px #4338ca;
+    }
+
+    /* ✅ Hero consistent with index gradient */
+    .hero{
+      padding: 90px 0 55px;
+      text-align:center;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+    }
+
+    .hero h2{
+      font-size: clamp(2rem, 4.5vw, 3.3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0 0 12px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .hero p{
+      margin: 0 auto;
+      max-width: 700px;
+      font-size: clamp(1rem, 2.3vw, 1.25rem);
+      font-weight: 500;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.12);
+      opacity: 0.98;
+    }
+
+    /* ✅ Reflective glass card */
+    .glass-card{
+      margin-top: -28px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 26px;
+      box-shadow: 0 18px 45px rgba(99,102,241,0.18);
+      overflow:hidden;
+    }
+
+    /* Shine reflection strip */
+    .glass-top-shine{
+      height: 10px;
+      background: linear-gradient(90deg,
+        rgba(255,255,255,0.0),
+        rgba(255,255,255,0.75),
+        rgba(255,255,255,0.0)
+      );
+    }
+
+    /* Trust strip */
+    .trust{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      padding: 18px;
+      border-bottom: 1px solid rgba(148,163,184,0.35);
+    }
+
+    .trust-item{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.55);
+    }
+    .trust-item .material-icons{ color:#4338ca; }
+    .trust-item strong{ display:block; font-size: .95rem; }
+    .trust-item span{ display:block; font-size: .85rem; color:#64748b; }
+
+    /* About content */
+    .about{
+      padding: 22px 22px 26px;
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+    }
+
+    .about h3{
+      margin: 0 0 10px;
+      color:#4338ca;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .about p{
+      margin: 0 0 12px;
+      color:#334155;
+      font-weight: 500;
+    }
+
+    /* Stats/side card */
+    .side-card{
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(148,163,184,0.35);
+      border-radius: 22px;
+      padding: 18px;
+      height: fit-content;
+      box-shadow: 0 10px 25px rgba(99,102,241,0.12);
+    }
+
+    .side-card .stat{
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px dashed rgba(148,163,184,0.45);
+    }
+    .side-card .stat:last-child{ border-bottom:none; }
+    .side-card .label{ color:#64748b; font-weight: 700; }
+    .side-card .value{ color:#111827; font-weight: 900; }
+
+    /* CTA buttons (connects user back to index/products) */
+    .actions{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 0 22px 22px;
+      justify-content: flex-start;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 900;
+      border: 2px solid transparent;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+      min-width: 200px;
+    }
+
+    .btn-primary{
+      background:#7c3aed;
+      color:#fff;
+      box-shadow: 0 12px 30px rgba(124,58,237,0.25);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); }
+    .btn-secondary{
+      background:#fff;
+      color:#4338ca;
+      border-color:#c7d2fe;
+    }
+    .btn-secondary:hover{ background: rgba(124,58,237,0.06); }
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding: 26px 16px;
+      color:#475569;
+      background: rgba(255,255,255,0.65);
+      border-top: 1px solid rgba(148,163,184,0.35);
+      margin-top: 40px;
+    }
+
+    /* ✅ Responsive */
+    @media (max-width: 900px){
+      .about{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 767px){
+      header{ padding: 0 16px; }
+      nav a{ margin-left: 10px; font-size: .9rem; }
+      .hero{ padding: 75px 0 50px; }
+      .trust{ grid-template-columns: 1fr 1fr; }
+      .btn{ min-width: 160px; width: 100%; }
+      .actions{ padding: 0 18px 18px; }
+    }
+    @media (max-width: 480px){
+      .trust{ grid-template-columns: 1fr; }
+      .container{ padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#about">Skip to About</a>
+<!-- ✅ Header links already connect to Index page -->
+<header>
+<h1>Garg Glasses Co.</h1>
+<nav aria-label="Primary navigation">
+<a data-nav="index.html" href="index.html">Home</a>
+<a data-nav="products.html" href="products.html">Products</a>
+<a data-nav="about.html" href="about.html">About</a>
+<a data-nav="contact.html" href="contact.html">Contact</a>
+<a data-nav="faq.html" href="faq.html">FAQ</a>
+<a data-nav="cart.html" href="cart.html">Cart</a>
+<a data-nav="login.html" href="login.html" id="navAuthLink">Login</a>
+</nav>
+</header>
+<!-- Hero -->
+<section class="hero" role="banner">
+<div class="container">
+<h2>About Garg Glasses</h2>
+<p>Premium mirror &amp; glass craftsmanship since 2015 — designed to elevate every space.</p>
+</div>
+</section>
+<!-- Reflective glass card layout -->
+<main class="container">
+<section aria-label="About content" class="glass-card" id="about">
+<div aria-hidden="true" class="glass-top-shine"></div>
+<!-- Trust strip (same as index feel) -->
+<div aria-label="Why customers choose us" class="trust">
+<div class="trust-item">
+<span aria-hidden="true" class="material-icons">verified</span>
+<div><strong>Premium Finish</strong><span>High-grade glass &amp; polish</span></div>
+</div>
+<div class="trust-item">
+<span aria-hidden="true" class="material-icons">local_shipping</span>
+<div><strong>Safe Delivery</strong><span>Secure packaging support</span></div>
+</div>
+<div class="trust-item">
+<span aria-hidden="true" class="material-icons">support_agent</span>
+<div><strong>Quick Support</strong><span>Fast replies &amp; guidance</span></div>
+</div>
+<div class="trust-item">
+<span aria-hidden="true" class="material-icons">design_services</span>
+<div><strong>Custom Orders</strong><span>Sizes &amp; designs available</span></div>
+</div>
+</div>
+<!-- About content + side stats -->
+<div class="about">
+<div>
+<h3>We reflect your world.</h3>
+<p>
+            Founded in 2015, Garg Glasses Co. is India’s premium mirror and glass brand. We combine traditional
+            craftsmanship with modern design to create pieces that enhance spaces — from homes and hotels to
+            showrooms and offices.
+          </p>
+<p>
+            Our factory uses advanced tempering and polishing technologies. Every mirror is checked for quality,
+            durability, and brilliance before it reaches you.
+          </p>
+<p>
+            We don’t just create mirrors — we reflect your vision with clarity, style, and heart.
+          </p>
+</div>
+<aside aria-label="Company highlights" class="side-card">
+<div class="stat">
+<span class="label">Since</span><span class="value">2015</span>
+</div>
+<div class="stat">
+<span class="label">Quality Checks</span><span class="value">100%</span>
+</div>
+<div class="stat">
+<span class="label">Custom Orders</span><span class="value">Available</span>
+</div>
+<div class="stat">
+<span class="label">Support</span><span class="value">Fast</span>
+</div>
+</aside>
+</div>
+<!-- ✅ Connect back to index/products -->
+<div aria-label="Navigation actions" class="actions">
+<a class="btn btn-primary" href="products.html">
+<span aria-hidden="true" class="material-icons">storefront</span>
+          Browse Products
+        </a>
+<a class="btn btn-secondary" href="index.html#products">
+<span aria-hidden="true" class="material-icons">star</span>
+          View Bestsellers
+        </a>
+</div>
+</section>
+</main>
+<footer>
+    © 2025 Garg Glasses Co. | All rights reserved
+  </footer>
+<script src="main.js"></script></body>
+</html>

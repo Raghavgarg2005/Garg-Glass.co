@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Garg Glasses Co.</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Page specific layout (keeps same design language) */
+    .login-shell{
+      max-width:1100px;
+      margin:48px auto 80px;
+      padding:0 24px;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap:24px;
+      align-items:start;
+    }
+    .title{
+      margin:0 0 6px;
+      font-weight:900;
+      color:#111827;
+      font-size:clamp(1.6rem, 3vw, 2.1rem);
+    }
+    .subtitle{
+      margin:0 0 18px;
+      color:#64748b;
+      font-weight:700;
+    }
+    label{ display:block; font-weight:900; color:#111827; margin:12px 0 6px; }
+    input{
+      width:100%;
+      padding:12px 14px;
+      border-radius:14px;
+      border:2px solid #c7d2fe;
+      font-family:'Poppins',sans-serif;
+      font-weight:700;
+      color:#334155;
+      outline:none;
+      background:#fff;
+    }
+    input:focus{ border-color:#7c3aed; box-shadow:0 0 0 4px rgba(124,58,237,.18); }
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:10px;
+    }
+    .small-link{
+      color:#4338ca;
+      font-weight:900;
+      font-size:.92rem;
+      padding:6px 8px;
+      border-radius:10px;
+      display:inline-block;
+    }
+    .small-link:hover,
+    .small-link:focus{
+      outline:none;
+      background:rgba(124 58 237 / 0.08);
+      box-shadow:0 0 0 3px rgba(124,58,237,.16);
+    }
+    .btn{
+      border:none;
+      cursor:pointer;
+      font-weight:900;
+      border-radius:16px;
+      padding:14px 16px;
+      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition:transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+      margin-top:14px;
+      width:100%;
+      background:#7c3aed;
+      color:#fff;
+      box-shadow:0 10px 25px rgba(124,58,237,.25);
+      font-family:'Poppins',sans-serif;
+    }
+    .btn:hover{ background:#5b21b6; transform:translateY(-1px); }
+    .btn:focus{ outline:none; box-shadow:0 0 0 4px rgba(124,58,237,.20); }
+
+    .form-feedback{
+      margin:10px 0 0;
+      font-weight:900;
+      display:none;
+      text-align:center;
+    }
+
+    .info h3{ margin:0 0 12px; font-weight:900; color:#111827; font-size:1.2rem; }
+    .info p{ margin:0 0 14px; color:#64748b; font-weight:700; }
+    .benefit{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px;
+      border-radius:18px;
+      border:1px solid #e5e7eb;
+      background:rgba(99 102 241 / 0.05);
+      margin-bottom:12px;
+    }
+    .benefit .material-icons{ color:#4338ca; }
+    .benefit strong{ display:block; color:#111827; }
+    .benefit span{ display:block; color:#64748b; font-weight:700; }
+
+    @media (max-width: 900px){
+      .login-shell{ grid-template-columns:1fr; margin-top:28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Garg Glasses Co.</h1>
+    <nav aria-label="Primary navigation">
+      <a href="index.html" data-nav="index.html">Home</a>
+      <a href="products.html" data-nav="products.html">Products</a>
+      <a href="about.html" data-nav="about.html">About</a>
+      <a href="contact.html" data-nav="contact.html">Contact</a>
+      <a href="faq.html" data-nav="faq.html">FAQ</a>
+      <a href="cart.html" data-nav="cart.html">Cart</a>
+      <a href="login.html" data-nav="login.html" id="navAuthLink">Login</a>
+    </nav>
+  </header>
+
+  <main role="main" aria-label="Sign up page">
+    <div class="login-shell">
+
+      <section class="card" aria-labelledby="signup-title">
+        <h2 class="title" id="signup-title">Create your account</h2>
+        <p class="subtitle">Sign up to save your cart and continue faster. (Demo account storage)</p>
+
+        <form id="signupForm" novalidate>
+          <div>
+            <label for="nameInput">Name</label>
+            <input type="text" id="nameInput" name="name" placeholder="Enter your name" required />
+          </div>
+
+          <div>
+            <label for="emailInput">Email</label>
+            <input type="email" id="emailInput" name="email" placeholder="Enter your email" required autocomplete="email" />
+          </div>
+
+          <div>
+            <label for="passwordInput">Password</label>
+            <input type="password" id="passwordInput" name="password" placeholder="Create a password" required />
+          </div>
+
+          <div class="row">
+            <a class="small-link" href="login.html">Already have an account? Login</a>
+            <a class="small-link" href="contact.html">Need help?</a>
+          </div>
+
+          <button type="submit" class="btn">
+            <span class="material-icons" aria-hidden="true">person_add</span>
+            Sign Up
+          </button>
+
+          <p id="formFeedback" class="form-feedback" role="alert" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <aside class="card info" aria-label="Sign up benefits">
+        <h3>Why sign up?</h3>
+        <p>We keep it simple. Your account helps personalize your experience.</p>
+
+        <div class="benefit">
+          <span class="material-icons" aria-hidden="true">shopping_cart</span>
+          <div>
+            <strong>Saved Cart</strong>
+            <span>Come back anytime and continue shopping.</span>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <span class="material-icons" aria-hidden="true">bolt</span>
+          <div>
+            <strong>Faster Checkout</strong>
+            <span>Your details stay ready for next time.</span>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <span class="material-icons" aria-hidden="true">verified</span>
+          <div>
+            <strong>Account Status</strong>
+            <span>Navbar shows you are logged in.</span>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <footer aria-label="Footer copyright" role="contentinfo">
+    &copy; 2025 Garg Glasses Co. | All rights reserved
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
